@@ -20,7 +20,7 @@ const data = entry.data;
 const code = `0${index + 1}`.slice(-2);
 ---
 
-<article class={`industry-card theme-${data.theme}`}>
+<article class={`industry-card theme-${data.theme}`} data-index={code}>
   <a href={`/industries/${data.slug}/`} aria-label={`Explore ${data.title}`}>
     <div class="card-topline"><span>{code}</span><span>{sourceLabel(data.sourceRefs[0].sourceId)}</span></div>
     <div class="card-glyph" aria-hidden="true"><span></span><span></span><span></span></div>
