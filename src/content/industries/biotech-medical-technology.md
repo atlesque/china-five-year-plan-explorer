@@ -11,11 +11,6 @@ sourceRefs:
   - sourceId: planEn
     locator: Part Two, Chapter 5, Box 3, items 03 and 10; Chapter 39
     page: "24–25, 120–122"
-comingNext:
-  - "TODO: distinguish biopharmaceuticals, biomanufacturing, and medical devices."
-  - "TODO: map the research-to-production and clinical application pathways."
-  - "TODO: add a source-linked view of cell, gene, diagnostic, and surgical technologies."
-  - "TODO: document regulatory and translation questions for later research."
 ---
 
 ## Why it matters in the plan

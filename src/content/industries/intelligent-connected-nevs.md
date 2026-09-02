@@ -11,10 +11,6 @@ sourceRefs:
   - sourceId: planEn
     locator: Part Two, Chapter 5, Section 1; Box 3, item 04
     page: "21–25"
-comingNext:
-  - "TODO: map vehicle, battery, charging, grid, and intelligent-road dependencies."
-  - "TODO: separate explicit plan measures from the broader NEV market context."
-  - "TODO: add a source-linked view of transport electrification applications."
 ---
 
 ## Why it matters in the plan

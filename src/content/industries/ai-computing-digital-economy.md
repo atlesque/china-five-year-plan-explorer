@@ -11,11 +11,6 @@ sourceRefs:
   - sourceId: planEn
     locator: Part Four, Chapters 12–14, including Box 10, the AI+ Action Initiative
     page: "50–53"
-comingNext:
-  - "TODO: map computing power, algorithms, data, and application layers across the plan."
-  - "TODO: distinguish explicit AI+ measures from editorial interpretation."
-  - "TODO: add a source-linked timeline of digital infrastructure milestones."
-  - "TODO: compare the digital-economy language with the 14th Five-Year Plan."
 ---
 
 ## Why it matters in the plan

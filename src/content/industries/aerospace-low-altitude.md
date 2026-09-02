@@ -11,11 +11,6 @@ sourceRefs:
   - sourceId: planEn
     locator: Part Two, Chapter 5, Box 3, items 05–07; Chapter 7, Box 7
     page: "24–25, 38–39"
-comingNext:
-  - "TODO: separate commercial aerospace, large aircraft, UAVs, and VTOL applications."
-  - "TODO: map satellite internet and low-altitude infrastructure dependencies."
-  - "TODO: add a source-linked timeline for demonstration and infrastructure build-out."
-  - "TODO: define the boundaries of the editorial cluster."
 ---
 
 ## Why it matters in the plan

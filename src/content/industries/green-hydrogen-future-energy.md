@@ -11,11 +11,6 @@ sourceRefs:
   - sourceId: planEn
     locator: Part Two, Chapter 5, Box 3, item 08; Chapter 7, Section 2
     page: "24–25, 35–37"
-comingNext:
-  - "TODO: map hydrogen production, storage, transport, and end-use pathways."
-  - "TODO: distinguish green hydrogen from broader future-energy language."
-  - "TODO: add a source-linked view of green ammonia, methanol, and aviation fuel."
-  - "TODO: identify where the plan describes demonstration versus scale-up."
 ---
 
 ## Why it matters in the plan

@@ -11,10 +11,6 @@ sourceRefs:
   - sourceId: planEn
     locator: Part Two, Chapter 4, Box 2, item 01
     page: "18–19"
-comingNext:
-  - "TODO: map material families to downstream strategic industries."
-  - "TODO: distinguish advanced materials from basic-component and equipment priorities."
-  - "TODO: add a source-linked capability and application matrix."
 ---
 
 ## Why it matters in the plan

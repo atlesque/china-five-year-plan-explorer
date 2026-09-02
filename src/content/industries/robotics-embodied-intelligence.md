@@ -11,11 +11,6 @@ sourceRefs:
   - sourceId: planEn
     locator: Part Two, Chapter 5, Section 2; Box 3, item 02
     page: "23–25"
-comingNext:
-  - "TODO: distinguish industrial robotics, embodied intelligence, and humanoid-robot language."
-  - "TODO: map the hardware, model, sensor, and actuator layers."
-  - "TODO: add a source-linked timeline of demonstration and commercialization pathways."
-  - "TODO: document where this page uses editorial grouping."
 ---
 
 ## Why it matters in the plan

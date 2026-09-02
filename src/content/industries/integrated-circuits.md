@@ -11,11 +11,6 @@ sourceRefs:
   - sourceId: planEn
     locator: Part Two, Chapter 5, Box 3, item 01; Part Three, Chapter 8
     page: "21–25, 29–31"
-comingNext:
-  - "TODO: map the semiconductor stack from materials and equipment to processors and memory."
-  - "TODO: add source-linked distinctions between research, manufacturing, and application goals."
-  - "TODO: identify the plan’s references to industrial machine tools and foundational software."
-  - "TODO: compare semiconductor priorities across the 14th and 15th plans."
 ---
 
 ## Why it matters in the plan

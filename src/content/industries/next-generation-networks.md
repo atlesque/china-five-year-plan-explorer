@@ -11,11 +11,6 @@ sourceRefs:
   - sourceId: planEn
     locator: Part Two, Chapter 7, Section 4; Box 7, item 03; Part Two, Chapter 5, Section 2
     page: "39–41, 23–25"
-comingNext:
-  - "TODO: map terrestrial, optical, satellite, and computing-network layers."
-  - "TODO: distinguish 5G-A deployment from 6G research and verification."
-  - "TODO: add a source-linked infrastructure sequence and terminology guide."
-  - "TODO: connect network priorities to AI, low-altitude, and industrial use cases."
 ---
 
 ## Why it matters in the plan

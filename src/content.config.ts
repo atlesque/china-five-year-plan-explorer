@@ -32,7 +32,6 @@ const industries = defineCollection({
     theme: z.enum(['cyan', 'violet', 'jade', 'amber']),
     status: z.literal('mvp'),
     sourceRefs: z.array(sourceRefSchema).min(1),
-    comingNext: z.array(z.string()).min(3).max(5),
   }),
 });
 

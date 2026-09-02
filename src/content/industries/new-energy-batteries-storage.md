@@ -11,11 +11,6 @@ sourceRefs:
   - sourceId: planEn
     locator: Part Two, Chapter 5, Box 3, item 04; Chapter 7, Section 2
     page: "24–25, 35–37"
-comingNext:
-  - "TODO: map generation, transmission, storage, and demand-side flexibility."
-  - "TODO: distinguish named targets from enabling infrastructure."
-  - "TODO: add a source-linked battery and storage technology timeline."
-  - "TODO: compare energy-system language with the previous plan."
 ---
 
 ## Why it matters in the plan

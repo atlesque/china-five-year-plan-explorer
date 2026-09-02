@@ -11,10 +11,6 @@ sourceRefs:
   - sourceId: planEn
     locator: Part Two, Chapter 5, Section 2; Box 3, item 09; Part Three, Chapter 8
     page: "23–25, 29–31"
-comingNext:
-  - "TODO: separate quantum technology, brain-computer interfaces, and related frontier fields."
-  - "TODO: distinguish research, demonstration, and commercialization language."
-  - "TODO: add a source-linked terminology and maturity framework."
 ---
 
 ## Why it matters in the plan

@@ -4,8 +4,6 @@ import CoverPlaceholder from '@/components/CoverPlaceholder.astro';
 import IndustryHeader from '@/components/IndustryHeader.astro';
 import IndustryPager from '@/components/IndustryPager.astro';
 import SourceReferences from '@/components/SourceReferences.astro';
-import SkeletonResearchPreview from '@/components/SkeletonResearchPreview.astro';
-import TodoModule from '@/components/TodoModule.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { absoluteUrl } from '@/lib/seo';
 import { validateIndustryEntries } from '@/lib/validateIndustryEntries';
@@ -70,8 +68,6 @@ const jsonLd = [
       </div>
     </div>
     <SourceReferences refs={data.sourceRefs} />
-    <TodoModule items={data.comingNext} />
-    <SkeletonResearchPreview />
   </div>
   <IndustryPager previous={previous} next={next} />
 </BaseLayout>

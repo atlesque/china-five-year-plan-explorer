@@ -11,11 +11,6 @@ sourceRefs:
   - sourceId: planEn
     locator: Part Eleven, Chapter 40, Sections 1–2
     page: "124–127"
-comingNext:
-  - "TODO: map home, community, institutional, and medical-care integration models."
-  - "TODO: distinguish care services, adapted products, and silver-economy consumption."
-  - "TODO: add a source-linked view of demographic and wellbeing priorities."
-  - "TODO: compare the chapter’s framing with the 14th Five-Year Plan."
 ---
 
 ## Why it matters in the plan
