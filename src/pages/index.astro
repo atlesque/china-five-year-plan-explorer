@@ -1,0 +1,145 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { planMeta, planThemes } from '../data/plan.ts';
+
+const { title, overview, timeframe } = planMeta;
+const themeCount = planThemes.length;
+---
+
+<BaseLayout title={`${title} | Source-grounded overview`} description={overview}>
+  <main class="page-shell">
+    <section class="container hero">
+      <div>
+        <p class="eyebrow">Source-grounded public policy atlas</p>
+        <h1>{planMeta.subtitle}</h1>
+        <p class="hero-copy">{overview}</p>
+
+        <div class="cta-row">
+          <a class="button button-primary" href="#explorer">Browse priorities</a>
+          <a class="button button-secondary" href="/sources">Source index</a>
+        </div>
+      </div>
+
+      <aside class="hero-panel" aria-label="Plan snapshot">
+        <h2>Plan snapshot</h2>
+        <ul>
+          <li>
+            <strong>{timeframe}</strong>
+            <span>Implementation window</span>
+          </li>
+          <li>
+            <strong>{themeCount}</strong>
+            <span>Strategic policy themes</span>
+          </li>
+          <li>
+            <strong>Public policy</strong>
+            <span>Source-backed overview</span>
+          </li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="container metrics" aria-label="Key indicators">
+      <article class="metric">
+        <span class="value">5</span>
+        <span class="label">Years of planning</span>
+      </article>
+      <article class="metric">
+        <span class="value">6</span>
+        <span class="label">Source references</span>
+      </article>
+      <article class="metric">
+        <span class="value">100%</span>
+        <span class="label">Static and SEO-friendly</span>
+      </article>
+    </section>
+
+    <section id="explorer" class="container">
+      <div class="section-heading">
+        <h2>Explorer</h2>
+      </div>
+
+      <div class="filter-bar" role="tablist" aria-label="Filter plan themes">
+        <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">
+          All themes
+        </button>
+        <button class="filter-button" type="button" data-filter="growth" aria-pressed="false">
+          Growth
+        </button>
+        <button class="filter-button" type="button" data-filter="innovation" aria-pressed="false">
+          Innovation
+        </button>
+        <button class="filter-button" type="button" data-filter="green" aria-pressed="false">
+          Green transition
+        </button>
+        <button class="filter-button" type="button" data-filter="people" aria-pressed="false">
+          People
+        </button>
+        <button class="filter-button" type="button" data-filter="security" aria-pressed="false">
+          Security
+        </button>
+      </div>
+
+      <div class="topics">
+        {planThemes.map((theme) => (
+          <article class="topic-card" data-theme={theme.id}>
+            <p class="eyebrow">{theme.tagline}</p>
+            <h3>{theme.label}</h3>
+            <div class="tagline">{theme.tagline}</div>
+            <p>{theme.summary}</p>
+            <ul>
+              {theme.actions.map((action) => <li>{action}</li>)}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="container prose-block" style="margin-top: 4rem;">
+      <div class="section-heading">
+        <h2>Source-backed framing</h2>
+      </div>
+
+      <p>
+        The explorer intentionally keeps the policy view close to public planning and government source
+        material. Each theme reflects a recurring direction seen across official planning language and
+        programmatic press coverage rather than opaque model-generated summaries.
+      </p>
+    </section>
+
+    <section class="container" style="margin-top: 2rem;">
+      {planThemes.map((theme) => (
+        <article class="source-card" style="margin-bottom: 1rem;">
+          <div>
+            <p class="source-label">Source</p>
+            <h2>{theme.source.label}</h2>
+            <p>{theme.source.institution}</p>
+          </div>
+          <a href={theme.source.url} target="_blank" rel="noreferrer noopener">View source</a>
+        </article>
+      ))}
+    </section>
+  </main>
+
+  <script is:inline>
+    const buttons = document.querySelectorAll('.filter-button');
+    const cards = document.querySelectorAll('.topic-card');
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const filter = button.dataset.filter;
+
+        buttons.forEach((item) => {
+          const isActive = item === button;
+          item.classList.toggle('is-active', isActive);
+          item.setAttribute('aria-pressed', String(isActive));
+        });
+
+        cards.forEach((card) => {
+          const show = filter === 'all' || card.dataset.theme === filter;
+          card.hidden = !show;
+        });
+      });
+    });
+  </script>
+</BaseLayout>

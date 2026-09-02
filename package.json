@@ -1,0 +1,32 @@
+{
+  "name": "china-five-year-plan-explorer",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Interactive, source-grounded explorer for China’s 15th Five-Year Plan (2026–2030)",
+  "scripts": {
+    "dev": "astro dev --host 0.0.0.0",
+    "build": "astro build",
+    "preview": "astro preview --host 0.0.0.0",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "astro": "^7.2.10"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atlesque/china-five-year-plan-explorer"
+  },
+  "keywords": [
+    "astro",
+    "china",
+    "five-year-plan",
+    "data"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "typescript": "^6.0.3"
+  }
+}

@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { sourceIndex } from '../data/plan.ts';
+
+const title = 'Sources | 15th Five-Year Plan Explorer';
+const description = 'Source index for the China 15th Five-Year Plan (2026–2030) explorer.';
+---
+
+<BaseLayout title={title} description={description}>
+  <main class="page-shell">
+    <section class="container prose-block narrow">
+      <p class="eyebrow">Source index</p>
+      <h1>Official policy sources behind the plan</h1>
+      <p>
+        This atlas compiles government and planning materials commonly used to frame the development
+        direction of China’s next five-year cycle, with emphasis on formal strategic guidance, budget
+        coordination, industrial policy and public-service planning.
+      </p>
+    </section>
+
+    <section class="container source-list" aria-label="Official sources for the plan">
+      {sourceIndex.map((source) => (
+        <article class="source-card source-card--page">
+          <div>
+            <p class="source-label">{source.label}</p>
+            <h2>{source.institution}</h2>
+            <p>{source.description}</p>
+          </div>
+          <a href={source.url} target="_blank" rel="noreferrer noopener">Open source</a>
+        </article>
+      ))}
+    </section>
+  </main>
+</BaseLayout>
