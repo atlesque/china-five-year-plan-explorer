@@ -9,7 +9,7 @@ interface Props {
 const { entries } = Astro.props;
 ---
 
-<ul class="industry-grid" aria-label="Industry and growth themes">
+<ul class="industry-grid" aria-label="Industry impact index">
   {entries.map((entry, index) => (
     <li><IndustryCard entry={entry} index={index} /></li>
   ))}

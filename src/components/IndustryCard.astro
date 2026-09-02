@@ -22,11 +22,15 @@ const code = `0${index + 1}`.slice(-2);
 
 <article class={`industry-card theme-${data.theme}`} data-index={code}>
   <a href={`/industries/${data.slug}/`} aria-label={`Explore ${data.title}`}>
-    <div class="card-topline"><span>{code}</span><span>{sourceLabel(data.sourceRefs[0].sourceId)}</span></div>
-    <div class="card-glyph" aria-hidden="true"><span></span><span></span><span></span></div>
-    <p class="card-eyebrow">{data.eyebrow}</p>
-    <h3>{data.title}</h3>
-    <p class="card-description">{data.shortDescription}</p>
-    <span class="card-cta">View plan impact <span aria-hidden="true">↗</span></span>
+    <span class="card-index" aria-hidden="true">{code}</span>
+    <div class="card-main">
+      <p class="card-eyebrow">{data.eyebrow}</p>
+      <h3>{data.title}</h3>
+      <p class="card-description">{data.shortDescription}</p>
+    </div>
+    <div class="card-side">
+      <span class="card-source">{sourceLabel(data.sourceRefs[0].sourceId)}</span>
+      <span class="card-cta">Open field <strong aria-hidden="true">↗</strong></span>
+    </div>
   </a>
 </article>
