@@ -1,0 +1,29 @@
+<div class="theme-toggle" role="group" aria-label="Color theme">
+  <span class="theme-toggle-label">Theme</span>
+  <div class="theme-toggle-options">
+    <button type="button" data-theme-choice="auto" aria-pressed="true">Auto</button>
+    <button type="button" data-theme-choice="light" aria-pressed="false">Light</button>
+    <button type="button" data-theme-choice="dark" aria-pressed="false">Dark</button>
+  </div>
+</div>
+
+<script is:inline>
+  const root = document.documentElement;
+  const choices = Array.from(document.querySelectorAll('[data-theme-choice]'));
+  const validModes = new Set(['auto', 'light', 'dark']);
+
+  const setMode = (mode, persist = true) => {
+    const nextMode = validModes.has(mode) ? mode : 'auto';
+    root.dataset.colorMode = nextMode;
+    if (persist) localStorage.setItem('plan-color-mode', nextMode);
+    choices.forEach((choice) => {
+      choice.setAttribute('aria-pressed', String(choice.dataset.themeChoice === nextMode));
+    });
+  };
+
+  choices.forEach((choice) => {
+    choice.addEventListener('click', () => setMode(choice.dataset.themeChoice));
+  });
+
+  setMode(root.dataset.colorMode || 'auto', false);
+</script>

@@ -1,0 +1,51 @@
+---
+import { sources } from '@/data/sources';
+import ExternalSourceLink from '@/components/ExternalSourceLink.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { absoluteUrl } from '@/lib/seo';
+
+const description = 'Source provenance, translation notes, and citation methodology for China’s 15th Five-Year Plan Explorer.';
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Sources and Methodology | China’s 15th Five-Year Plan Explorer',
+  description,
+  url: absoluteUrl(Astro.site, '/sources/'),
+  about: 'China’s 15th Five-Year Plan (2026–2030)',
+  citation: [sources.planZh.url, sources.planEn.url],
+};
+---
+
+<BaseLayout title="Sources and Methodology" description={description} jsonLd={jsonLd}>
+  <section class="source-page shell">
+    <p class="kicker">Provenance / editorial method</p>
+    <h1>Read the source<br /><em>behind the map.</em></h1>
+    <p class="lead">This explorer is an editorial discovery layer around the plan, not a replacement for the source document. Every industry page keeps its structural citation visible.</p>
+    <div class="source-content" aria-label="Primary source documents">
+      <article class="source-document">
+        <span class="source-tag">Authoritative document / 中文</span>
+        <h2>{sources.planZh.title}</h2>
+        <p>{sources.planZh.publisher}. The Chinese original is authoritative.</p>
+        <ExternalSourceLink href={sources.planZh.url} label="Read the official Chinese original (PDF)" />
+      </article>
+      <article class="source-document">
+        <span class="source-tag">Translation used for MVP / English</span>
+        <h2>{sources.planEn.title}</h2>
+        <p>{sources.planEn.publisher}. This translation is used for the initial English-language content.</p>
+        <ExternalSourceLink href={sources.planEn.url} label="Read the English translation (PDF)" />
+      </article>
+    </div>
+    <div class="method-grid">
+      <div>
+        <p class="kicker">How to read the pages</p>
+        <h2>Structural locators over fragile line numbers.</h2>
+        <p>References use the plan’s part, chapter, section, box, and item structure. PDF page numbers are included when available, but can vary between hosted editions.</p>
+        <p>Industry groupings and card descriptions are editorial summaries of plan language. They are not rankings, investment recommendations, or official classifications beyond the terms explicitly used in the plan.</p>
+      </div>
+      <div class="callout">
+        <p><strong>Editorial framing</strong></p>
+        <p>When closely related source passages are grouped under one reader-facing title, the page preserves the original anchors and labels the grouping as editorial.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

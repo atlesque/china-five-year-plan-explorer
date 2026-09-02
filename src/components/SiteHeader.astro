@@ -1,0 +1,36 @@
+---
+import { sources } from '@/data/sources';
+import ExternalSourceLink from './ExternalSourceLink.astro';
+import ThemeToggle from './ThemeToggle.astro';
+
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = Astro.url.pathname } = Astro.props;
+const isActive = (path: string) => currentPath === path || currentPath.startsWith(`${path}/`);
+---
+
+<header class="site-header">
+  <div class="shell header-inner">
+    <a class="brand" href="/" aria-label="China's 15th Five-Year Plan Explorer home">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span>
+        <span class="brand-name">Plan Explorer</span>
+        <span class="brand-meta">15th five-year plan / 2026–2030</span>
+      </span>
+    </a>
+
+    <nav class="primary-nav" aria-label="Primary navigation">
+      <a class:list={[isActive('/') && currentPath === '/' && 'is-active']} href="/">Overview</a>
+      <a class:list={[isActive('/industries') && 'is-active']} href="/industries/">Industries</a>
+      <a class:list={[isActive('/sources') && 'is-active']} href="/sources/">Sources</a>
+    </nav>
+
+    <ThemeToggle />
+    <div class="header-sources" aria-label="Source documents">
+      <ExternalSourceLink href={sources.planZh.url} label="中文原文" compact />
+      <ExternalSourceLink href={sources.planEn.url} label="English PDF" compact />
+    </div>
+  </div>
+</header>

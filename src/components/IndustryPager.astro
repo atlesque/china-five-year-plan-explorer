@@ -1,0 +1,11 @@
+---
+interface PageEntry { data: { slug: string; title: string } }
+interface Props { previous?: PageEntry; next?: PageEntry; }
+const { previous, next } = Astro.props;
+---
+
+<nav class="industry-pager shell" aria-label="Industry navigation">
+  {previous ? <a class="pager-link pager-previous" href={`/industries/${previous.data.slug}/`}><span>← Previous</span><strong>{previous.data.title}</strong></a> : <span></span>}
+  <a class="pager-index" href="/industries/">All industries</a>
+  {next ? <a class="pager-link pager-next" href={`/industries/${next.data.slug}/`}><span>Next →</span><strong>{next.data.title}</strong></a> : <span></span>}
+</nav>

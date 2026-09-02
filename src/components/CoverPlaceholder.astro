@@ -1,0 +1,19 @@
+---
+interface Props {
+  theme: 'cyan' | 'violet' | 'jade' | 'amber';
+  code: string;
+  title: string;
+}
+
+const { theme, code, title } = Astro.props;
+---
+
+<figure class={`cover-placeholder theme-${theme}`}>
+  <div class="cover-geometry" aria-hidden="true">
+    <span class="cover-ring ring-one"></span>
+    <span class="cover-ring ring-two"></span>
+    <span class="cover-ring ring-three"></span>
+    <span class="cover-signal"></span>
+  </div>
+  <figcaption><span>{code}</span><strong>{title}</strong><small>CSS visual placeholder · future research cover</small></figcaption>
+</figure>

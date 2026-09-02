@@ -1,0 +1,46 @@
+---
+import { getCollection } from 'astro:content';
+import IndustryGrid from '@/components/IndustryGrid.astro';
+import PlanAtAGlance from '@/components/PlanAtAGlance.astro';
+import PlanHero from '@/components/PlanHero.astro';
+import SourcePanel from '@/components/SourcePanel.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { absoluteUrl, siteName } from '@/lib/seo';
+
+const entries = (await getCollection('industries')).sort((a, b) => a.data.order - b.data.order);
+const themeCount = entries.length;
+const description = 'Explore China’s 15th Five-Year Plan (2026–2030) through source-grounded industry, infrastructure, technology, and social-priority themes.';
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: siteName,
+    url: absoluteUrl(Astro.site, '/'),
+    description,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Key industries and growth themes',
+    itemListElement: entries.map((entry, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: entry.data.title,
+      url: absoluteUrl(Astro.site, `/industries/${entry.data.slug}/`),
+    })),
+  },
+];
+---
+
+<BaseLayout description={description} jsonLd={jsonLd}>
+  <PlanHero />
+  <SourcePanel />
+  <PlanAtAGlance themeCount={themeCount} />
+  <section class="industry-section shell" aria-labelledby="industry-section-title">
+    <div class="section-heading-row">
+      <div><p class="kicker">Explore the signals</p><h2 id="industry-section-title">Key industries and growth themes</h2></div>
+      <p class="section-aside">{themeCount} editorial clusters follow the plan’s own language while making related passages easier to navigate.</p>
+    </div>
+    <IndustryGrid entries={entries} />
+  </section>
+</BaseLayout>

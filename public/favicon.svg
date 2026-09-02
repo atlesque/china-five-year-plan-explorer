@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title>China's 15th Five-Year Plan Explorer</title>
+  <rect width="64" height="64" rx="16" fill="#07131d"/>
+  <path d="M12 44V20h8v24h-8Zm16 0V12h8v32h-8Zm16 0V27h8v17h-8Z" fill="#6be7ff"/>
+  <path d="M11 49h42" stroke="#a98bff" stroke-width="3"/>
+</svg>

@@ -1,0 +1,77 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import CoverPlaceholder from '@/components/CoverPlaceholder.astro';
+import IndustryHeader from '@/components/IndustryHeader.astro';
+import IndustryPager from '@/components/IndustryPager.astro';
+import SourceReferences from '@/components/SourceReferences.astro';
+import SkeletonResearchPreview from '@/components/SkeletonResearchPreview.astro';
+import TodoModule from '@/components/TodoModule.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { absoluteUrl } from '@/lib/seo';
+import { validateIndustryEntries } from '@/lib/validateIndustryEntries';
+
+type IndustryEntry = CollectionEntry<'industries'>;
+
+export async function getStaticPaths() {
+  const entries = validateIndustryEntries(await getCollection('industries')).sort((a, b) => a.data.order - b.data.order);
+  return entries.map((entry, index) => ({
+    params: { slug: entry.data.slug },
+    props: {
+      entry,
+      index,
+      previous: entries[index - 1],
+      next: entries[index + 1],
+    },
+  }));
+}
+
+const { entry, index, previous, next } = Astro.props as {
+  entry: IndustryEntry;
+  index: number;
+  previous?: IndustryEntry;
+  next?: IndustryEntry;
+};
+const { Content } = await render(entry);
+const data = entry.data;
+const code = String(index + 1).padStart(2, '0');
+const description = `${data.title}: ${data.deck}`;
+const canonical = absoluteUrl(Astro.site, `/industries/${data.slug}/`);
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: data.title,
+    description,
+    url: canonical,
+    isPartOf: { '@type': 'WebSite', name: 'China’s 15th Five-Year Plan Explorer', url: absoluteUrl(Astro.site, '/') },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: absoluteUrl(Astro.site, '/') },
+      { '@type': 'ListItem', position: 2, name: 'Industries', item: absoluteUrl(Astro.site, '/industries/') },
+      { '@type': 'ListItem', position: 3, name: data.title, item: canonical },
+    ],
+  },
+];
+---
+
+<BaseLayout title={data.title} description={description} type="article" jsonLd={jsonLd}>
+  <IndustryHeader title={data.title} eyebrow={data.eyebrow} deck={data.deck} />
+  <div class="detail-body">
+    <div class="detail-layout">
+      <div class="detail-cover">
+        <CoverPlaceholder theme={data.theme} code={`THEME ${code}`} title={data.title} />
+      </div>
+      <div>
+        <div class="detail-note"><strong>Source focus</strong><br />{data.sourceRefs[0].locator}</div>
+        <article class="editorial-content"><Content /></article>
+      </div>
+    </div>
+    <SourceReferences refs={data.sourceRefs} />
+    <TodoModule items={data.comingNext} />
+    <SkeletonResearchPreview />
+  </div>
+  <IndustryPager previous={previous} next={next} />
+</BaseLayout>

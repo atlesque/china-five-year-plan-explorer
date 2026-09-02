@@ -1,0 +1,14 @@
+---
+interface Props { items: string[]; }
+const { items } = Astro.props;
+---
+
+<section class="todo-section" aria-labelledby="coming-next-title">
+  <div class="section-heading-row">
+    <div><p class="kicker">Planned research</p><h2 id="coming-next-title">Research modules coming in the next release</h2></div>
+    <span class="status-badge">PLANNED</span>
+  </div>
+  <ul class="todo-grid">
+    {items.map((item, index) => <li><span>0{index + 1}</span><p>{item}</p></li>)}
+  </ul>
+</section>

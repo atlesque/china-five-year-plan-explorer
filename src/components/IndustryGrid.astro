@@ -1,0 +1,16 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import IndustryCard from './IndustryCard.astro';
+
+interface Props {
+  entries: CollectionEntry<'industries'>[];
+}
+
+const { entries } = Astro.props;
+---
+
+<ul class="industry-grid" aria-label="Industry and growth themes">
+  {entries.map((entry, index) => (
+    <li><IndustryCard entry={entry} index={index} /></li>
+  ))}
+</ul>

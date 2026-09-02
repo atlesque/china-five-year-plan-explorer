@@ -1,0 +1,22 @@
+---
+import { sources } from '@/data/sources';
+import ExternalSourceLink from './ExternalSourceLink.astro';
+---
+
+<section class="source-panel shell" aria-labelledby="source-panel-title">
+  <div class="source-panel-intro">
+    <p class="kicker">Start with the evidence</p>
+    <h2 id="source-panel-title">Two documents, one reading path.</h2>
+    <p>Explore the plan through the official Chinese original and the English translation used for this site. The Chinese original is authoritative.</p>
+  </div>
+  <div class="source-actions">
+    <div class="source-action">
+      <span class="source-number">01</span>
+      <div><p class="source-label">Authoritative source</p><ExternalSourceLink href={sources.planZh.url} label="Open Chinese original (PDF)" /></div>
+    </div>
+    <div class="source-action">
+      <span class="source-number">02</span>
+      <div><p class="source-label">Translation used for MVP</p><ExternalSourceLink href={sources.planEn.url} label="Open English translation (PDF)" /></div>
+    </div>
+  </div>
+</section>

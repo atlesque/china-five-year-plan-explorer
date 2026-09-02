@@ -1,0 +1,32 @@
+---
+import { getSource, referenceText, sourceLabel } from '@/lib/sourceRefs';
+import type { SourceRef } from '@/data/sources';
+
+interface Props {
+  refs: SourceRef[];
+}
+
+const { refs } = Astro.props;
+---
+
+<section class="references" aria-labelledby="references-title">
+  <div class="section-heading-row">
+    <div><p class="kicker">Evidence trail</p><h2 id="references-title">Sources and references</h2></div>
+    <p class="section-aside">Structural locators are the durable citation; PDF page numbers may vary between hosted editions.</p>
+  </div>
+  <ol class="reference-list">
+    {refs.map((ref) => {
+      const source = getSource(ref.sourceId);
+      return <li>
+        <span class="reference-index" aria-hidden="true">↳</span>
+        <div>
+          <p><cite>{source.title}</cite> <span class="reference-language">· {sourceLabel(ref.sourceId)}</span></p>
+          <p class="reference-locator">{ref.locator}{ref.page ? ` · ${sourceLabel(ref.sourceId)} PDF pp. ${ref.page}` : ''}</p>
+          {ref.note && <p class="reference-note">{ref.note}</p>}
+          <a class="reference-link" href={source.url} target="_blank" rel="noopener noreferrer">Read the {sourceLabel(ref.sourceId)} (PDF) ↗</a>
+        </div>
+      </li>;
+    })}
+  </ol>
+  <p class="reference-method">{referenceText(refs[0])} The plan’s structural locator anchors this editorial summary.</p>
+</section>

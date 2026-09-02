@@ -1,0 +1,18 @@
+---
+import Breadcrumbs from './Breadcrumbs.astro';
+
+interface Props {
+  title: string;
+  eyebrow: string;
+  deck: string;
+}
+
+const { title, eyebrow, deck } = Astro.props;
+---
+
+<div class="shell detail-header">
+  <Breadcrumbs current={title} />
+  <p class="kicker">{eyebrow}</p>
+  <h1>{title}</h1>
+  <p class="detail-deck">{deck}</p>
+</div>

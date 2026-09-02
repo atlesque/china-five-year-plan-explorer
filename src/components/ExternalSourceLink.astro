@@ -1,0 +1,20 @@
+---
+interface Props {
+  href: string;
+  label: string;
+  compact?: boolean;
+}
+
+const { href, label, compact = false } = Astro.props;
+---
+
+<a
+  class:list={[compact ? 'source-link source-link--compact' : 'source-link', 'external-link']}
+  href={href}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label={`${label} (opens in a new tab)`}
+>
+  <span>{label}</span>
+  <span aria-hidden="true">↗</span>
+</a>

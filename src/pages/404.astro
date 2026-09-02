@@ -1,0 +1,16 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const description = 'The requested page could not be found in China’s 15th Five-Year Plan Explorer.';
+---
+
+<BaseLayout title="Page not found" description={description} noindex>
+  <section class="not-found shell">
+    <div>
+      <p class="kicker">Signal lost / 404</p>
+      <h1>Not on<br /><em>this map.</em></h1>
+      <p>The page you’re looking for may have moved, or the industry signal may not be part of this MVP yet.</p>
+      <a class="text-button" href="/industries/">Return to all industries</a>
+    </div>
+  </section>
+</BaseLayout>

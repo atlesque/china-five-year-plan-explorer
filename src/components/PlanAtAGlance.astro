@@ -1,0 +1,23 @@
+---
+interface Props {
+  themeCount: number;
+}
+
+const { themeCount } = Astro.props;
+---
+
+<section class="glance-section shell" aria-labelledby="glance-title">
+  <div class="section-heading-row">
+    <div>
+      <p class="kicker">The document at a glance</p>
+      <h2 id="glance-title">A long-range outline with a broad industrial lens.</h2>
+    </div>
+    <p class="section-aside">The explorer focuses on the parts of the outline that describe capabilities, sectors, infrastructure, and social domains.</p>
+  </div>
+  <dl class="glance-grid">
+    <div><dt>18</dt><dd>parts</dd></div>
+    <div><dt>62</dt><dd>chapters</dd></div>
+    <div><dt>2026–30</dt><dd>planning period</dd></div>
+    <div><dt>{themeCount}</dt><dd>reader-friendly themes</dd></div>
+  </dl>
+</section>

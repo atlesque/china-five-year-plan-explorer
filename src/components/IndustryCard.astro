@@ -1,0 +1,32 @@
+---
+import { sourceLabel } from '@/lib/sourceRefs';
+
+interface Props {
+  entry: {
+    data: {
+      slug: string;
+      title: string;
+      eyebrow: string;
+      shortDescription: string;
+      theme: 'cyan' | 'violet' | 'jade' | 'amber';
+      sourceRefs: { sourceId: 'planZh' | 'planEn' }[];
+    };
+  };
+  index: number;
+}
+
+const { entry, index } = Astro.props;
+const data = entry.data;
+const code = `0${index + 1}`.slice(-2);
+---
+
+<article class={`industry-card theme-${data.theme}`}>
+  <a href={`/industries/${data.slug}/`} aria-label={`Explore ${data.title}`}>
+    <div class="card-topline"><span>{code}</span><span>{sourceLabel(data.sourceRefs[0].sourceId)}</span></div>
+    <div class="card-glyph" aria-hidden="true"><span></span><span></span><span></span></div>
+    <p class="card-eyebrow">{data.eyebrow}</p>
+    <h3>{data.title}</h3>
+    <p class="card-description">{data.shortDescription}</p>
+    <span class="card-cta">Read the orientation <span aria-hidden="true">↗</span></span>
+  </a>
+</article>

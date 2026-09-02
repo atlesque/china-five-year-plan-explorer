@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+import IndustryGrid from '@/components/IndustryGrid.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { absoluteUrl } from '@/lib/seo';
+
+const entries = (await getCollection('industries')).sort((a, b) => a.data.order - b.data.order);
+const themeCount = entries.length;
+const description = `Browse all ${themeCount} source-grounded industry and growth-theme pages in China’s 15th Five-Year Plan Explorer.`;
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Industries | China’s 15th Five-Year Plan Explorer',
+  description,
+  url: absoluteUrl(Astro.site, '/industries/'),
+  hasPart: entries.map((entry) => ({ '@type': 'WebPage', name: entry.data.title, url: absoluteUrl(Astro.site, `/industries/${entry.data.slug}/`) })),
+};
+---
+
+<BaseLayout title="Industries" description={description} jsonLd={jsonLd}>
+  <section class="page-intro shell">
+    <p class="kicker">Directory / {themeCount} themes</p>
+    <h1>A map of directed attention.</h1>
+    <p>These editorial groupings make the plan’s industry, infrastructure, technology, and social-priority language easier to scan. The titles are reader-facing labels, not official classifications beyond the source terms they gather.</p>
+    <p class="directory-count">{themeCount} static detail pages · generated from one validated collection</p>
+  </section>
+  <section class="industry-section shell" aria-labelledby="directory-title">
+    <h2 id="directory-title" class="sr-only">All industries and growth themes</h2>
+    <IndustryGrid entries={entries} />
+  </section>
+</BaseLayout>
