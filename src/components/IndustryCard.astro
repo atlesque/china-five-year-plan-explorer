@@ -1,5 +1,5 @@
 ---
-import { sourceLabel } from '@/lib/sourceRefs';
+import IndustryIcon from './IndustryIcon.astro';
 
 interface Props {
   entry: {
@@ -22,14 +22,18 @@ const code = `0${index + 1}`.slice(-2);
 
 <article class={`industry-card theme-${data.theme}`} data-index={code}>
   <a href={`/industries/${data.slug}/`} aria-label={`Explore ${data.title}`}>
-    <span class="card-index" aria-hidden="true">{code}</span>
+    <div class="card-index-column">
+      <span class="card-index" aria-hidden="true">{code}</span>
+      <span class="card-icon"><IndustryIcon slug={data.slug} /></span>
+    </div>
     <div class="card-main">
-      <p class="card-eyebrow">{data.eyebrow}</p>
+      <div class="card-title-row">
+        <p class="card-eyebrow">{data.eyebrow}</p>
+      </div>
       <h3>{data.title}</h3>
       <p class="card-description">{data.shortDescription}</p>
     </div>
     <div class="card-side">
-      <span class="card-source">{sourceLabel(data.sourceRefs[0].sourceId)}</span>
       <span class="card-cta">Open field <strong aria-hidden="true">↗</strong></span>
     </div>
   </a>

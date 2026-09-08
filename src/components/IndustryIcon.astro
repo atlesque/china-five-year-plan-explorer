@@ -1,0 +1,41 @@
+---
+interface Props {
+  slug: string;
+}
+
+const { slug } = Astro.props;
+
+import {
+  Atom,
+  BatteryCharging,
+  Bot,
+  BrainCircuit,
+  CarFront,
+  Cpu,
+  FlaskConical,
+  Gem,
+  HeartHandshake,
+  Leaf,
+  RadioTower,
+  Satellite,
+} from '@lucide/astro';
+
+const iconComponents = {
+  'ai-computing-digital-economy': BrainCircuit,
+  'integrated-circuits': Cpu,
+  'robotics-embodied-intelligence': Bot,
+  'new-energy-batteries-storage': BatteryCharging,
+  'intelligent-connected-nevs': CarFront,
+  'aerospace-low-altitude': Satellite,
+  'biotech-medical-technology': FlaskConical,
+  'advanced-materials': Gem,
+  'next-generation-networks': RadioTower,
+  'green-hydrogen-future-energy': Leaf,
+  'quantum-bci-frontier-tech': Atom,
+  'elderly-care-silver-economy': HeartHandshake,
+};
+
+const Icon = iconComponents[slug as keyof typeof iconComponents] ?? BrainCircuit;
+---
+
+<Icon size={42} stroke-width={1.35} aria-hidden="true" />

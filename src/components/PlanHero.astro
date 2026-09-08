@@ -8,12 +8,27 @@ import ExternalSourceLink from './ExternalSourceLink.astro';
     <p class="kicker"><span class="signal-dot" aria-hidden="true"></span> Industrial impact map · 2026–2030</p>
     <h1 id="hero-title">China’s 15th<br /><em>Five-Year Plan</em></h1>
     <p class="hero-deck">A source-grounded map of the industries, technologies, and systems the plan puts in motion.</p>
-    <div class="hero-actions" aria-label="Primary source documents">
-      <ExternalSourceLink href={sources.planZh.url} label="Open Chinese original" />
-      <ExternalSourceLink href={sources.planEn.url} label="Open English translation" />
+    <div class="hero-actions" aria-label="Explore industries and read the source documents">
+      <a class="hero-primary-cta" href="/industries/">
+        <span>Explore the industries that will change</span>
+        <strong aria-hidden="true">↗</strong>
+      </a>
+      <div class="hero-source-links">
+        <span class="hero-source-label">Source documents</span>
+        <ExternalSourceLink compact href={sources.planZh.url} label="Chinese original" />
+        <ExternalSourceLink compact href={sources.planEn.url} label="English translation" />
+      </div>
     </div>
     <p class="hero-note">Explore the impact map below, then follow the source trail on each industry page.</p>
   </div>
+  <svg class="hero-background-graphic" viewBox="0 0 320 250" aria-hidden="true">
+    <path d="M12 198C64 168 63 86 125 70c46-12 69 30 111 14 22-8 38-27 72-60" />
+    <path d="M12 223c72-32 86-111 144-111 45 0 60 27 102 9 21-9 34-21 56-42" />
+    <circle cx="125" cy="70" r="5" />
+    <circle cx="236" cy="84" r="5" />
+    <circle cx="308" cy="24" r="5" />
+    <path d="M125 70v-34M236 84v42M308 24v-16M125 36h-29M236 126h28" />
+  </svg>
   <div class="hero-visual" aria-hidden="true">
     <div class="hero-seal">纲</div>
     <div class="orb orb-one"></div>
