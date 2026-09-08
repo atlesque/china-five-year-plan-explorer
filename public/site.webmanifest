@@ -2,6 +2,7 @@
   "name": "China's 15th Five-Year Plan Explorer",
   "short_name": "15th Five-Year Plan",
   "description": "Explore the industries, technologies, and systems shaped by China's 15th Five-Year Plan (2026–2030).",
+  "id": "/",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
