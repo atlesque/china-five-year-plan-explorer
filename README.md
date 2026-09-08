@@ -17,7 +17,7 @@ pnpm build
 pnpm preview
 ```
 
-Set `PUBLIC_SITE_URL` when deploying so canonical URLs and sitemap entries use the real public origin. The local fallback is a reserved `.example.com` placeholder.
+The site uses `https://china-five-year-plan.atlesque.dev` as its default public origin. Set `PUBLIC_SITE_URL` for previews or if the site moves to another domain; Astro uses it for canonical URLs, Open Graph URLs, robots.txt, and sitemap entries.
 
 ## Routes
 

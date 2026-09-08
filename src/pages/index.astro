@@ -3,19 +3,11 @@ import { getCollection } from 'astro:content';
 import IndustryGrid from '@/components/IndustryGrid.astro';
 import PlanHero from '@/components/PlanHero.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { absoluteUrl, siteName } from '@/lib/seo';
+import { absoluteUrl } from '@/lib/seo';
 
 const entries = (await getCollection('industries')).sort((a, b) => a.data.order - b.data.order);
 const description = 'Explore the industries, technologies, and systems shaped by China’s 15th Five-Year Plan (2026–2030).';
-const jsonLd = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: siteName,
-    url: absoluteUrl(Astro.site, '/'),
-    description,
-  },
-  {
+const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
     name: 'Key industries and growth themes',
@@ -25,8 +17,7 @@ const jsonLd = [
       name: entry.data.title,
       url: absoluteUrl(Astro.site, `/industries/${entry.data.slug}/`),
     })),
-  },
-];
+};
 ---
 
 <BaseLayout description={description} jsonLd={jsonLd}>

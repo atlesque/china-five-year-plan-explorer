@@ -1,6 +1,6 @@
 ---
 import { sources } from '@/data/sources';
-import { absoluteUrl, pageTitle, siteName } from '@/lib/seo';
+import { absoluteUrl, pageTitle, siteDescription, siteName, socialImagePath } from '@/lib/seo';
 import JsonLd from '@/components/JsonLd.astro';
 import SkipLink from '@/components/SkipLink.astro';
 import SiteFooter from '@/components/SiteFooter.astro';
@@ -11,7 +11,7 @@ interface Props {
   title?: string;
   description: string;
   noindex?: boolean;
-  type?: 'website' | 'article';
+  type?: 'website' | 'article' | 'collection';
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
@@ -24,16 +24,46 @@ const {
 } = Astro.props;
 const documentTitle = pageTitle(title);
 const canonical = absoluteUrl(Astro.site, Astro.url.pathname);
-const image = absoluteUrl(Astro.site, '/og-default.svg');
-const defaultJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': type === 'article' ? 'Article' : 'WebPage',
-  name: documentTitle,
-  description,
-  url: canonical,
-  isPartOf: { '@type': 'WebSite', name: siteName, url: absoluteUrl(Astro.site, '/') },
-  citation: [sources.planZh.url, sources.planEn.url],
-};
+const siteUrl = absoluteUrl(Astro.site, '/');
+const image = absoluteUrl(Astro.site, socialImagePath);
+const imageAlt = "China's 15th Five-Year Plan Explorer — a source-grounded guide to strategic industries and growth themes";
+const openGraphType = type === 'article' ? 'article' : 'website';
+const structuredType = type === 'article' ? 'Article' : type === 'collection' ? 'CollectionPage' : 'WebPage';
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': `${siteUrl}#organization`,
+    name: siteName,
+    url: siteUrl,
+    logo: { '@type': 'ImageObject', url: image },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${siteUrl}#website`,
+    name: siteName,
+    url: siteUrl,
+    description: siteDescription,
+    inLanguage: 'en',
+    publisher: { '@id': `${siteUrl}#organization` },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': structuredType,
+    '@id': canonical,
+    name: documentTitle,
+    headline: title ?? documentTitle,
+    description,
+    url: canonical,
+    image,
+    inLanguage: 'en',
+    isPartOf: { '@id': `${siteUrl}#website` },
+    publisher: { '@id': `${siteUrl}#organization` },
+    citation: [sources.planZh.url, sources.planEn.url],
+  },
+  ...(jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : []),
+];
 ---
 
 <!doctype html>
@@ -49,22 +79,29 @@ const defaultJsonLd = {
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
-    <meta name="robots" content={noindex ? 'noindex,nofollow' : 'index,follow'} />
+    <meta name="robots" content={noindex ? 'noindex,follow' : 'index,follow'} />
+    <meta name="theme-color" content="#a83b2d" />
     <link rel="canonical" href={canonical} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta property="og:site_name" content={siteName} />
-    <meta property="og:type" content={type} />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content={openGraphType} />
     <meta property="og:title" content={documentTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={image} />
+    <meta property="og:image:alt" content={imageAlt} />
+    <meta property="og:image:type" content="image/svg+xml" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={documentTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={image} />
+    <meta name="twitter:image:alt" content={imageAlt} />
     <title>{documentTitle}</title>
     <slot name="head" />
-    <JsonLd data={jsonLd ?? defaultJsonLd} />
+    <JsonLd data={structuredData} />
   </head>
   <body>
     <SkipLink />

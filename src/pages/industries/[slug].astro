@@ -37,14 +37,6 @@ const canonical = absoluteUrl(Astro.site, `/industries/${data.slug}/`);
 const jsonLd = [
   {
     '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: data.title,
-    description,
-    url: canonical,
-    isPartOf: { '@type': 'WebSite', name: 'China’s 15th Five-Year Plan Explorer', url: absoluteUrl(Astro.site, '/') },
-  },
-  {
-    '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: absoluteUrl(Astro.site, '/') },
